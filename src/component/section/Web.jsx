@@ -60,37 +60,14 @@ const ScrollArrow = styled.article`
     bottom : 5%;
 `;
 
-function Home(props) {
+function Web(props) {
 
-    const content = "Hello! \n Welcome to my portfolio";
-    const [text, setText] = useState('');
-    const [count, setCount] = useState(0);
-
-    useEffect(() => {
-       
-        const interval = setInterval(() => {
-            setText(text + content[count]); // 이전 set한 문자 + 다음 문자
-            setCount(count + 1); // 개수 만큼 체크 
-        }, 150);
-        if(count === content.length)  {  // Count를 따로 두지 않고 Text.length 체크도 가능
-            clearInterval(interval); // 문자열 체크를 통해 setInterval을 해제합니다
-        }
-        return () => clearInterval(interval); // 언마운트시 setInterval을 해제합니다
-    });
-    
-  
     return (
         <Section id="home">
-        <HomeTextBox>
-          <HomeText>{text}</HomeText>
-          <Blink>|</Blink>
-        </HomeTextBox>
-        <ScrollArrow>
-          <a href="https://www.flaticon.com/kr/free-icons/" title="스크롤 아이콘"></a>
-        </ScrollArrow>
+
         </Section>
     );
 }
 
-export default Home;
+export default Web;
 // <!-- 스크롤 아이콘  제작자: fulmal - Flaticon -->

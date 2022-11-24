@@ -42,24 +42,25 @@ const Introduce = styled.div`
 `;
 
 const IntroduceTitle = styled.p`
-    font-size : 2rem;
+    font-size : 1.5rem;
     margin : 20px 30px;
     text-decoration: underline;
     text-underline-position:under;
     @media screen and (max-width: 1024px) {
-        font-size : 1.5rem;
-        margin : 10% 0px 3% 8%;
+        font-size : 1.375rem;
+        margin : 8% 0px 3% 8%;
     }
 
     @media screen and (max-width: 500px) {
-        font-size : 1.3rem;
+        font-size : 1.25rem;
     }
 `;
 
 const IntroduceContent = styled.p`
-    font-size : 1.5em;
+    font-size : 1rem;
     margin-left : 10%;
-    line-height : 2;
+    line-height : ${props => props.contect ? 3 : 2};
+    
     
     & {
         :is(:last-child) {
@@ -75,8 +76,9 @@ const IntroduceContent = styled.p`
         vertical-align: middle;
     }
 
+
     @media screen and (max-width: 1024px) {
-        font-size : 1rem;
+        font-size : 0.875rem;
         margin-left : 15%;
 
         & > img {
@@ -86,7 +88,7 @@ const IntroduceContent = styled.p`
     }
 
     @media screen and (max-width: 500px) {
-        font-size : .8rem;
+        font-size : 0.75rem;
         margin-left : 8%;
     }
 `;
@@ -112,15 +114,16 @@ const RightArticle = styled.article`
 `;
 
 const SkillTitle = styled.p`
-    font-size : 2rem;
-    margin : 20px 30px;
+    font-size : 1.5rem;
+    margin : 30px;
+    margin-bottom : 15px;
     color : #000;
     @media screen and (max-width: 1024px) {
-        font-size : 1.5rem;
-        margin : 10% 0px 3% 8%;
+        font-size : 1.375rem;
+        margin : 8% 0px 3% 8%;
     }
     @media screen and (max-width: 500px) {
-        font-size : 1.3rem;
+        font-size : 1.25rem;
     }
 `;
 
@@ -128,6 +131,7 @@ const SkillImgContainer = styled.div`
     width : 100%;
     height: auto;
     text-align : center;
+    margin-bottom : 4%;
     // display : flex;
     // flex-direction : row;
     // align-items : center;
@@ -142,7 +146,7 @@ const SkillImg = styled.div`
     border-radius : 100%;
     vertical-align: middle;
     justify-contents : space-around;
-    margin : 4% 4%;
+    margin : 4% 4% 1% 4%;
 
     @media screen and (max-width: 1024px) {
         width : 80px;
@@ -176,9 +180,9 @@ function Home(props) {
                 </Introduce>
                 <Introduce contectBlock>
                     <IntroduceTitle>CONTECT</IntroduceTitle>
-                    <IntroduceContent>&#128241; 010-4258-3558</IntroduceContent>
-                    <IntroduceContent>&#128231; rkdalswl1203@g.shingu.ac.kr</IntroduceContent>
-                    <IntroduceContent><img src={`${publicUrl}/img/skill/github_icon.png`} alt="github_icon" /> GitHub</IntroduceContent>
+                    <IntroduceContent contect>&#128241; 010-4258-3558</IntroduceContent>
+                    <IntroduceContent contect>&#128231; rkdalswl1203@g.shingu.ac.kr</IntroduceContent>
+                    <IntroduceContent contect><img src={`${publicUrl}/img/skill/github_icon.png`} alt="github_icon" /> GitHub</IntroduceContent>
                 </Introduce>
             </LeftArticle>
 

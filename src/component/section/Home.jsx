@@ -19,7 +19,7 @@ const HomeTextBox = styled.article`
     /* font-family: 'Josefin Slab', serif; */
     font-family: 'Bungee', cursive;
     line-height: 1.5;
-    font-size : 4.5rem;
+    font-size : 4rem;
     /* text-align: center; */
 
     /* 드래그 방지 */
@@ -50,7 +50,7 @@ const Blink = styled.span`
     color : #353535;
     animation: ${text_blink} 0.6s infinite;
     font-family: 'Noto Serif KR', sans-serif;
-    font-size : 3.8rem; 
+    font-size : 3.3rem; 
     vertical-align: top;
 `;
 
@@ -61,11 +61,28 @@ const ScrollArrow = styled.article`
     bottom : 5%;
 `;
 
+const ScrollArrowImg = styled.div`
+    display : inline-block;
+    width : 48px;
+    height : 48px;
+    vertical-align: middle;
+    justify-contents : space-around;
+
+    & > img {
+        width : 100%;
+        height : 100%;
+        object-fit: cover;
+        vertical-align: middle;
+    }
+`;
+
 function Home(props) {
     const page = props.pages;
     const content = "Hello! \n Welcome to my portfolio";
     const [text, setText] = useState('');
     const [count, setCount] = useState(0);
+
+    const publicUrl = process.env.PUBLIC_URL;
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -86,7 +103,7 @@ function Home(props) {
           <Blink>|</Blink>
         </HomeTextBox>
         <ScrollArrow>
-          <a href="https://www.flaticon.com/kr/free-icons/" title="스크롤 아이콘"></a>
+          <ScrollArrowImg><img src={`${publicUrl}/img/icon_scroll_down.png`} title="스크롤 아이콘"></img></ScrollArrowImg>
         </ScrollArrow>
         </Section>
     );

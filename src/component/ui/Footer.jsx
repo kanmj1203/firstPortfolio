@@ -52,8 +52,8 @@ function Footer(props) {
           </FooterCopyright>
           <FooterLinks>
             <ul>
-              <li><a href="#"><img src={`${publicUrl}/img/footer_icon/email_icon.png`} alt="email" /></a></li>
-              <li><a href="#"><img src={`${publicUrl}/img/footer_icon/github_icon.png`} alt="github" /></a></li>
+              <li><a href="mailto:rkdalswl1203@g.shingu.ac.kr.com"><img src={`${publicUrl}/img/footer_icon/email_icon.png`} alt="email" /></a></li>
+              <li><a href="https://github.com/kanmj1203"><img src={`${publicUrl}/img/footer_icon/github_icon.png`} alt="github" /></a></li>
             </ul>
           </FooterLinks>
     </StyledFooter>

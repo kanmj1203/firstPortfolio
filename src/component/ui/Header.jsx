@@ -7,14 +7,13 @@ const StyledHeader = styled.header`
     position: fixed;
     width : 100%;
     font-family: 'Noto Sans KR', sans-serif;
-    color : #414141;
     z-index: 999;
-
-    & > *  a {
+    transition:all 0.3s ease-out;
+    & > * a {
         color : #414141;
         text-decoration: none;
-        transition:all 0.3s ease-out;
     }
+
 `;
 
 const HeaderCanvas = styled.canvas`
@@ -25,9 +24,15 @@ const HeaderCanvas = styled.canvas`
 const Logo = styled.div`
     position : absolute;
     display : inline-block;
-    font-size : 2rem;
+    font-size : 1.625rem;
     left : 15vw;
-    top : 20%;
+    top : 23%;
+    font-weight : bold;
+
+    & > a:hover {
+        color : #7A9DE2;
+        transition:all 0.3s ease-out;
+    }
 `;
 
 const NavContainer = styled.nav`
@@ -37,27 +42,30 @@ const NavContainer = styled.nav`
     right : 15vw;
     top : 28%;
     font-size : 1.25rem;
+    transition:all 0.3s ease-out;
 
     & > ul > li  {
         margin-left : 3.3vw;
         display : inline-block;
+        
+        & > a {
+          transition:all 0.3s ease-out;
+        }
+        
+        &:hover > a {
+            color : #d9d9d9;
+            transition:all 0.3s ease-out;
+        }
     }
 `;
 
-const header_active = {
-    width : '13px',
-    height : '13px',
-    backgroundColor : '#7A9DE2',
-    /* transition: 0.3s; */
-  };
-
-
 function Header(props) {
     const {pages} = props;
-    // const scrollIndex = props.scrollIndex;
+    const scrollIndex = props.scrollIndex;
     const canvasRef = useRef(null);
     const [ctx, setCtx] = useState();  //캔버스 컨텍스트를 useState로 상태관리
-    // console.log(pages, scrollIndex);
+    
+
     useEffect(() => {
         // const canva s: HTMLCanvasElement = canvasRef.current;
         const canvas = canvasRef.current;
@@ -97,21 +105,60 @@ function Header(props) {
           ctx.fill();
 
     });
+
+    
+   // 클릭시 스크롤 이동 
+  const [scrollY, setScrollY] = useState(0);
+  const [pageHeight, setPageHeight] = useState(0);
+  const [pageCount, setPageCount] = useState(1);
+
+  const handleTop = (e, count) => {  // 클릭하면 스크롤이 위로 올라가는 함수
+    e.preventDefault();
+    window.scrollTo({
+      top: (count-1) * pageHeight,
+      behavior: "smooth"
+    });
+    setScrollY(count-1);  // ScrollY 의 값을 초기화
+    setPageCount(count);
+  }
+
+  useEffect(() => {
+    setPageHeight(window.innerHeight); // 화면 세로길이, 100vh와 같습니다.
+    
+    const watch = () => {
+      window.addEventListener('scroll', setScrollY);
+    }
+    watch();
+    return () => {
+      window.removeEventListener('scroll', setScrollY);
+    }
+  })
+
+    const scrollPageClick = (event) => {
+        console.log(event.target.id);
+        props.onScrollChange(event.target.id);
+    };
+
     // style={page.id== scrollIndex ? 'backgroundColor : #7A9DE2' : {} } 
     return (
         <StyledHeader>
             <HeaderCanvas ref={canvasRef} width="1920" height="70" />
-            <Logo><a href="#">K.MINJI</a></Logo>
+            <Logo><a href={`/#home`}>K.MINJI</a></Logo>
             <NavContainer>
                 <ul>
                     {pages.map((page) => {
-                        // var id = page.id;
-                         return <li key={page.id} onClick={() => {props.scrollIndex = page.id}}><a href="#">{page.title.toUpperCase()}</a></li>;
+                         return <li key={page.id} 
+                         onClick={(e) => {handleTop(e, page.id)}}
+                         className={pageCount == page.id  ? 'header_active' : undefined}
+                         >
+                            <a href={`/#${page.title}`}>{page.title.toUpperCase()}</a></li>;
                     })}
                 </ul>
             </NavContainer>
         </StyledHeader>
     );
 }
-
+// style={pageCount == page.id ? {color :' #7A9DE2'} : {color :' #414141'}}
+// className={pageCount == page.id && 'header_active'}
+                         
 export default Header;
