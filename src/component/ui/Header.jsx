@@ -122,6 +122,7 @@ function Header(props) {
     setPageCount(count);
   }
 
+
   useEffect(() => {
     setPageHeight(window.innerHeight); // 화면 세로길이, 100vh와 같습니다.
     

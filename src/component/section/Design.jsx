@@ -44,7 +44,7 @@ const DesignArticle = styled.article`
 
 // 왼쪽 소개상자
 const LeftBox = styled.div`
-    width : 35%;
+    width : 30%;
     // height : 30vh;
 
     // margin : 5% auto;
@@ -138,8 +138,8 @@ const DesignTag = styled.div`
 
 // 오른쪽 이미지, 파일 설명
 const RightBox = styled.div`
-    width : 50%;
-
+    width : 60%;
+    height : 70vh;
     // margin : 5% auto;
     // margin-right : -5%;
 
@@ -147,22 +147,66 @@ const RightBox = styled.div`
    
     text-align : left;
 
-    border-radius : 15px;
+    // border-radius : 15px;
 
     word-wrap: break-word;
-    background-color : pink;
+    background-color : transparent;
     vertical-align: middle;
 
 
     @media screen and (max-width: 768px) {
         width : 40%;
     }
-
-    & > div {
-        height: 300px;
-    }
 `;
 
+const DesignImgWrap = styled.div`
+   width : 100%;
+   height : 90%;
+   background-color : black;
+`;
+
+const DesignButtonWrap = styled.div`
+   width : 100%;
+   height : 10%;
+   background-color : pink;
+
+   display : flex;
+   align-items: center;
+//    justify-content: space-around;
+   
+   & > button {
+    border : none;
+    border-radius : 100px;
+    padding : 2px 10px;
+    margin : auto 5px;
+    background-color : #7A9DE2;
+    font-size : 1.25rem;
+    color : #414141;
+   }
+`;
+
+
+const designs = [
+    {
+        id : 1,
+        designTitle : "디자인1",
+        designText : "소개소개소개",
+        designTag : ['111','222'],
+
+    },
+    {
+        id : 2,
+        title : "about",
+    },
+    {
+        id : 3,
+        title : "design",
+    },
+    {
+        id : 4,
+        title : "web",
+    },
+];
 
 
 
@@ -193,14 +237,14 @@ function Design(props) {
                     <DesignTag><span>#태그1</span><span>#태그1</span></DesignTag>
                 </LeftBox>
                 <RightBox>
-                    <div>
+                    <DesignImgWrap>
                         <img></img>
-                    </div>
-                    <div>
+                    </DesignImgWrap>
+                    <DesignButtonWrap>
                         <button type="button" onClick={OpenFile}>
                             sdfdsf
                         </button>
-                    </div>
+                    </DesignButtonWrap>
                 </RightBox>
             </DesignArticle>
             <DesignArticle><div>2</div></DesignArticle>

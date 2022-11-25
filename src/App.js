@@ -106,6 +106,10 @@ function App() {
               <Slide><Design pages = {pages[2]} ></Design></Slide>
               <Slide><Web pages = {pages[3]} ></Web></Slide>
           </FullPage>
+          {/* <Home pages = {pages[0]} ></Home>
+              <About pages = {pages[1]} ></About>
+              <Design pages = {pages[2]} ></Design>
+              <Web pages = {pages[3]} ></Web> */}
           <Footer></Footer>
       </Main>
     </PointerWrap>
