@@ -22,24 +22,19 @@ const PageBtnsWrap = styled.ul`
 `;
 
 const PageBtn = styled.li`
-    & > div {
+    cursor : pointer;
+`;
+
+const PageDot = styled.div`
         width : 8px;
         height : 8px;
         background-color : #d9d9d9;
         border-radius: 100%;
-        /* transition: 0.3s; */
         margin : 0 auto;
         transition:all 0.3s ease-out;
-    }
+
 `;
 
-
-// #page_btn_active {
-//     width : 13px;
-//     height : 13px;
-//     background-color : #7A9DE2;
-//     /* transition: 0.3s; */
-//   }
 
 function Aside(props) {
     const {pages} = props;
@@ -47,7 +42,11 @@ function Aside(props) {
         <PageBtnsContainer>
           <PageBtnsWrap>
           {pages.map((page) => {
-            return <PageBtn key = {page.id}><div></div></PageBtn>
+            return <PageBtn key = {page.id}
+            onClick={(e) => {props.onHandleTop(e, page.id)}}
+            className={props.pageCount == page.id  ? 'aside_active' : undefined}>
+                <PageDot></PageDot>
+            </PageBtn>
           })}
           </PageBtnsWrap>
         </PageBtnsContainer>

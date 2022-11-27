@@ -170,7 +170,7 @@ function Home(props) {
     const publicUrl = process.env.PUBLIC_URL;
    
     return (
-        <Section id="home">
+        <Section id={props.pages.title}>
             <LeftArticle>
                 <Introduce nameBlock>
                     <IntroduceTitle>NAME</IntroduceTitle>

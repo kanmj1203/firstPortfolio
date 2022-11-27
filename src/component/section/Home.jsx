@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from "react";
+import React, {useState, useEffect} from "react";
 import styled, {keyframes} from "styled-components";
 // import "../../css/default.css";
 // import "../../fonts/font.css";
@@ -77,7 +77,6 @@ const ScrollArrowImg = styled.div`
 `;
 
 function Home(props) {
-    const page = props.pages;
     const content = "Hello! \n Welcome to my portfolio";
     const [text, setText] = useState('');
     const [count, setCount] = useState(0);
@@ -88,7 +87,7 @@ function Home(props) {
         const interval = setInterval(() => {
             setText(text + content[count]); // 이전 set한 문자 + 다음 문자
             setCount(count + 1); // 개수 만큼 체크 
-        }, 150);
+        }, 120);
         if(count === content.length)  {  // Count를 따로 두지 않고 Text.length 체크도 가능
             clearInterval(interval); // 문자열 체크를 통해 setInterval을 해제합니다
         }
@@ -97,7 +96,7 @@ function Home(props) {
     
     // toUpperCase()
     return (
-        <Section id={page.title} key={page.id}> 
+        <Section id={props.pages.title}> 
         <HomeTextBox>
           <HomeText>{text}</HomeText>
           <Blink>|</Blink>

@@ -173,3 +173,11 @@ body::-webkit-scrollbar-track {
   /* background-color : transparent; */
   transition:all 0.3s ease-out;
 }
+
+/* aside 캐러셀 현재 위치 표시 */
+.aside_active > div{
+    transition:all 0.3s ease-out;
+    width : 13px;
+    height : 13px;
+    background-color : #7a9de2;
+}

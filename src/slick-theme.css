@@ -128,6 +128,7 @@
 {
     position: absolute;
     bottom: -25px;
+    left : 18vw;
 
     display: block;
 
@@ -139,6 +140,15 @@
 
     text-align: center;
 }
+
+@media screen and (max-width: 768px) {
+    .slick-dots {
+        left : 50%;
+        transform : translateX(-50%);
+        bottom : -45px;
+    }
+}
+
 .slick-dots li
 {
     position: relative;
